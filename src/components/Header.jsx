@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMoon, IoMoonOutline } from 'react-icons/io5';
+import { useSelector, useDispatch } from 'react-redux';
+import { setTheme } from '../store/theme/theme-action';
 
 import { Container } from './Container';
 
@@ -30,13 +32,17 @@ const ModeSwitcher = styled.div`
   color: var(--colors-text);
   font-size: var(--fs-sm);
   cursor: pointer;
-  // font-weight: var(--fw-bold);
   text-transform: capitalize;
 `;
 
 export const Header = () => {
-  const theme = 'light';
+  const dispatch = useDispatch();
+  const theme = useSelector(state => state.theme);
 
+  const toggleTheme = () =>
+    dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
+
+  // меняем атрибут в body, а от атрибута зависят стили
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
   }, [theme]);
@@ -46,11 +52,11 @@ export const Header = () => {
       <Container>
         <Wrapper>
           <Title>Where is the world?</Title>
-          <ModeSwitcher>
+          <ModeSwitcher onClick={toggleTheme}>
             {theme === 'light' ? (
-              <IoMoonOutline size="14px" />
+              <IoMoonOutline size='14px' />
             ) : (
-              <IoMoon size="14px" />
+              <IoMoon size='14px' />
             )}{' '}
             <span style={{ marginLeft: '0.75rem' }}>{theme} Theme</span>
           </ModeSwitcher>
