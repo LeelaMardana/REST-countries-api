@@ -86,7 +86,7 @@ const Tag = styled.span`
   cursor: pointer;
 `;
 
-export const Info = (props) => {
+export const Info = props => {
   const {
     name,
     nativeName,
@@ -129,19 +129,19 @@ export const Info = (props) => {
           <List>
             <ListItem>
               <b>Top Level Domain</b>{' '}
-              {topLevelDomain.map((d) => (
+              {topLevelDomain.map(d => (
                 <span key={d}>{d}</span>
               ))}
             </ListItem>
             <ListItem>
               <b>Currency</b>{' '}
-              {currencies.map((c) => (
+              {currencies.map(c => (
                 <span key={c.code}>{c.name} </span>
               ))}
             </ListItem>
             <ListItem>
               <b>Top Level Domain</b>{' '}
-              {languages.map((l) => (
+              {languages.map(l => (
                 <span key={l.name}>{l.name}</span>
               ))}
             </ListItem>
@@ -153,7 +153,7 @@ export const Info = (props) => {
             <span>There is no border countries</span>
           ) : (
             <TagGroup>
-              {[].map((b) => (
+              {[].map(b => (
                 <Tag key={b} onClick={() => push(`/country/${b}`)}>
                   {b}
                 </Tag>

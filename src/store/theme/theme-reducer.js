@@ -1,4 +1,4 @@
-import { SET_THEME } from './theme-action';
+import { SET_THEME } from './theme-actions';
 
 export const themeReducer = (state = 'dark', { type, payload }) => {
   switch (type) {

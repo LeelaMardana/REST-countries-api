@@ -1,11 +1,11 @@
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMoon, IoMoonOutline } from 'react-icons/io5';
-import { useSelector, useDispatch } from 'react-redux';
-import { setTheme } from '../store/theme/theme-action';
 
 import { Container } from './Container';
+import { setTheme } from '../store/theme/theme-actions';
 
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);
@@ -42,7 +42,6 @@ export const Header = () => {
   const toggleTheme = () =>
     dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
 
-  // меняем атрибут в body, а от атрибута зависят стили
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
   }, [theme]);
